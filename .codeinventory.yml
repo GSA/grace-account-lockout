@@ -1,0 +1,12 @@
+name: 'GSA/grace-account-lockout'
+description: 'Account Lockout Lambda for NIST 800-53 AC-7: Unsuccessful Login Attempts'
+license: null
+openSourceProject: 1
+governmentWideReuseProject: 1
+tags:
+    - open-source
+    - opensource
+    - grace
+    - devsecops
+contact:
+    email: devsecops-core@gsa.gov
