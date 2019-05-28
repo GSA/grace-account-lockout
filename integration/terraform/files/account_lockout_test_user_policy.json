@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowTestUserToSeeAndManageOnlyTheirOwnPassword",
+      "Effect": "Allow",
+      "Action": [
+        "iam:ChangePassword",
+        "iam:CreateLoginProfile",
+        "iam:DeleteLoginProfile",
+        "iam:GetLoginProfile",
+        "iam:UpdateLoginProfile"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    }
+  ]
+}

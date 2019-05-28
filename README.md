@@ -1,4 +1,6 @@
-# grace-account-lockout [![CircleCI](https://circleci.com/gh/GSA/grace-account-lockout.svg?style=svg)](https://circleci.com/gh/GSA/grace-account-lockout)
+# grace-account-lockout
+
+*Product owner and security engineering decided that lockout is not required as MFA is already implemented*
 
 Lambda functions for NIST 800-53 AC-7: Unsuccessful Login Attempts
 
@@ -13,6 +15,40 @@ Notification of operations team and user email address [resource tag: Email]
 a. Enforces a limit of [Assignment: organization-defined number] consecutive invalid logon attempts by a user during a [Assignment: organization-defined time period]; and
 
 b. Automatically [Selection: locks the account/node for an [Assignment: organization-defined time period]; locks the account/node until released by an administrator; delays next logon prompt according to [Assignment: organization-defined delay algorithm]] when the maximum number of unsuccessful attempts is exceeded.
+
+### Sample Failed Authentication Event
+
+```
+{
+    "eventVersion": "1.05",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "ABCDEFGHIJKLMNOPQRSTU",
+        "accountId": "999999999999",
+        "accessKeyId": "",
+        "userName": "account-lockout-test-user"
+    },
+    "eventTime": "2019-05-14T17:54:29Z",
+    "eventSource": "signin.amazonaws.com",
+    "eventName": "ConsoleLogin",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "73.19.224.95",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
+    "errorMessage": "Failed authentication",
+    "requestParameters": null,
+    "responseElements": {
+        "ConsoleLogin": "Failure"
+    },
+    "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home?state=hashArgs%23&isauthcode=true",
+        "MobileVersion": "No",
+        "MFAUsed": "Yes"
+    },
+    "eventID": "bdd2f222-a55d-43f6-8d64-9f89fab243f0",
+    "eventType": "AwsConsoleSignIn",
+    "recipientAccountId": "999999999999"
+}
+```
 
 ## Repository contents
 
